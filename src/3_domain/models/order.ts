@@ -16,4 +16,7 @@ export class Order {
 
     public billingAddress: Address;
     public deliveryAddress: Address;
+
+    public updateOrder(status: OrderStatus) { return; }
+    public createBillingInformation(): Bill { return new Bill(); }
 }
