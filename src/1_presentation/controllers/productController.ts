@@ -1,14 +1,14 @@
-  import { Request } from "express";
+  import * as express from "express";
   import { inject } from "inversify";
-  import {
-    controller, httpDelete, httpGet, httpPost, httpPut,
+  import { request,
+    controller, httpDelete, httpGet, httpPost, httpPut, requestParam,
   } from "inversify-express-utils";
   import TYPES from "./../../4_infrastructure/container/TYPES";
   import { IProductService } from "./../../2_application/product/productServiceInterface";
   import { Product } from "./../../3_domain/models/product";
 
   @controller("/products")
-  export class CustomerController {
+  export class ProductController {
       private productService: IProductService;
 
     constructor(@inject(TYPES.IProductService) productService: IProductService) {
@@ -19,35 +19,25 @@
     public getAllProducts(): Product[] {
         return this.productService.getAll();
     }
+
+    @httpGet("/:id")
+    public getProduct(): Product {
+        return null;
+    }
+
+    @httpPost("/")
+    public addProduct(@request() req: express.Request): Product {
+        return null;
+    }
+
+    @httpPut("/:id")
+    public updateProduct(@request() req: express.Request): Product {
+        return null;
+    }
+
+    @httpDelete("/:id")
+    public deleteProduct(@requestParam("id") id: string): boolean {
+        return false;
+    }
   }
-
-  // import express from "express";
-// const productRoutes = express.Router();
-
-// // middleware that is specific to this router
-// // router.use(function timeLog(req, res, next) {
-// //   console.log("Time: ", Date.now());
-// //   next();
-// // });
-// // define the home page route
-// productRoutes.get("/products", (req, res) => {
-//   res.send("All products");
-// });
-// // define the about route
-// productRoutes.get("/product/:id ", (req, res) => {
-//   res.send("About birds");
-// });
-
-// productRoutes.post("/product ", (req, res) => {
-//     res.send("Create product");
-// });
-
-// productRoutes.put("/product ", (req, res) => {
-//     res.send("Update product");
-// });
-
-// productRoutes.delete("/product/:id ", (req, res) => {
-//     res.send("Delete product");
-// });
-
-// export = productRoutes;
+  

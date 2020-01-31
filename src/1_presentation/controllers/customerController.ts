@@ -1,30 +1,22 @@
-// import express from "express";
-// const customerRoutes = express.Router();
+import * as express from "express";
+import { inject } from "inversify";
+import { request,
+  controller, httpDelete, httpGet, httpPost, httpPut, requestParam,
+} from "inversify-express-utils";
+import TYPES from "./../../4_infrastructure/container/TYPES";
+import { Customer } from "./../../3_domain/models/customer";
+import { ICustomerService } from "./../../2_application/customer/customerServiceInterface";
 
-// // middleware that is specific to this router
-// // router.use(function timeLog(req, res, next) {
-// //   console.log("Time: ", Date.now());
-// //   next();
-// // });
-// // define the home page route
-// customerRoutes.get("/customers", (req, res) => {
-//   res.send("All Customers");
-// });
-// // define the about route
-// customerRoutes.get("/customer/:id ", (req, res) => {
-//   res.send("About birds");
-// });
+@controller("/customers")
+export class CustomerController {
+    private customerService: ICustomerService;
 
-// customerRoutes.post("/customer ", (req, res) => {
-//     res.send("Create customer");
-// });
+  constructor(@inject(TYPES.ICustomerService) customerService: ICustomerService) {
+      this.customerService = customerService;
+  }
 
-// customerRoutes.put("/customer ", (req, res) => {
-//     res.send("Update customer");
-// });
-
-// customerRoutes.delete("/customer/:id ", (req, res) => {
-//     res.send("Delete customer");
-// });
-
-// export = customerRoutes;
+  @httpGet("/")
+  public getAllProducts(): Customer[] {
+      return this.customerService.getAll();
+  }
+}

@@ -2,9 +2,10 @@ import "reflect-metadata";
 import bodyParser from "body-parser";
 import { Container } from "inversify";
 import { InversifyExpressServer } from "inversify-express-utils";
+import { ShopDependencyContainer } from "./../4_infrastructure/container/container";
 
 import "./controllers/productController";
-import { ShopDependencyContainer } from "./../4_infrastructure/container/container";
+import "./controllers/customerController";
 
 const port = 8080 || process.env.PORT;
 
