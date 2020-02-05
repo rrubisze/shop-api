@@ -3,6 +3,7 @@ const TYPES = {
     ICustomerService: Symbol.for("CustomerService"),
     ProductRepository: Symbol.for("ProductRepository"),
     CustomerRepository: Symbol.for("CustomerRepository"),
+    DatabaseContext: Symbol.for("DatabaseContext"),
 };
 
 export default TYPES;

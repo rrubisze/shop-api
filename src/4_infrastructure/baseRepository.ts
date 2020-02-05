@@ -1,9 +1,16 @@
 import { injectable } from "inversify";
+import { DatabaseContext } from "./dbContext";
 
 @injectable()
 export abstract class BaseRepository<T> {
+    context: DatabaseContext;
+
+    constructor(context: DatabaseContext) {
+        this.context = context;
+    }
+
     public getAll(): T[] {
-        return null;
+        return this.context.getContext().get('customers');
     }
 
     public getById(): T {

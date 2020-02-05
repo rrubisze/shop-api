@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import * as express from "express";
 import { inject } from "inversify";
 import { request,
@@ -42,6 +43,16 @@ export class CustomerController {
 
   @httpPost("/address/customer/:id")
   public addAddress(@requestParam("id") id: string, @request() req: express.Request): boolean {
+      return false;
+  }
+
+  @httpPost("/customer/:id/purchase")
+  public purchase(@requestParam("id") id: string, @request() req: express.Request): boolean {
+      return false;
+  }
+
+  @httpGet("/customer/:id/bill")
+  public getBill(@requestParam("id") id: string, @request() req: express.Request): boolean {
       return false;
   }
 

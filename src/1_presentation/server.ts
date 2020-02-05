@@ -7,7 +7,7 @@ import { ShopDependencyContainer } from "./../4_infrastructure/container/contain
 import "./controllers/productController";
 import "./controllers/customerController";
 
-const port = 8080 || process.env.PORT;
+const port = 3000 || process.env.PORT;
 
 const shopContainer = new ShopDependencyContainer();
 const container = shopContainer.getContainer();
