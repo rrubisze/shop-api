@@ -22,22 +22,23 @@
     }
 
     @httpGet("/:id")
-    public getProduct(): Product {
-        return null;
+    public getProduct(@requestParam("id") id: string): Product {
+        const a = this.productService.getById(id);
+        return a;
     }
 
     @httpPost("/")
     public addProduct(@request() req: express.Request): Product {
-        return null;
+        return this.productService.addProduct(req.body);
     }
 
     @httpPut("/:id")
-    public updateProduct(@request() req: express.Request): Product {
-        return null;
+    public updateProduct(@requestParam("id") id: string, @request() req: express.Request): Product {
+        return this.productService.updateProduct(req.body.id, req.body);
     }
 
     @httpDelete("/:id")
     public deleteProduct(@requestParam("id") id: string): boolean {
-        return false;
+        return this.productService.removeProduct(id);
     }
   }

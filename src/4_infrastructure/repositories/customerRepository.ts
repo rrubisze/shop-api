@@ -12,5 +12,7 @@ export class CustomerRepository extends BaseRepository<Customer> {
      */
     constructor(@inject(TYPES.DatabaseContext) databaseContext: DatabaseContext) {
         super(databaseContext);
+        this.tableName = "customers";
     }
+
 }

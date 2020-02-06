@@ -5,4 +5,8 @@ export class Address {
     public city: string;
     public country: string;
     public phone: string;
+
+    public constructor(init?: Partial<Address>) {
+        Object.assign(this, init);
+    }
 }

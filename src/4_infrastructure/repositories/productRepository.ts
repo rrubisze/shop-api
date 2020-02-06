@@ -9,5 +9,6 @@ export class ProductRepository extends BaseRepository<Product> {
 
     constructor(@inject(TYPES.DatabaseContext) databaseContext: DatabaseContext) {
         super(databaseContext);
+        this.tableName = "products";
     }
 }

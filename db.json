@@ -1,8 +1,172 @@
 {
   "customers": [
-    {
-      "name": "Asdasdas"
-    }
+    [
+      [
+        {
+          "address": {
+            "city": "Auckland",
+            "country": "New Zeland",
+            "phone": "44 33 548 456",
+            "street": "Samlet St.",
+            "streetNumber": "1",
+            "zipcode": 612
+          },
+          "customerStatus": 1,
+          "id": "1",
+          "password": "1234",
+          "person": {
+            "email": "emma.stone@customDomain.com",
+            "lastname": "Emma",
+            "phone": "33 55 789 123",
+            "surname": "Stone"
+          }
+        },
+        {
+          "address": {
+            "city": "Auckland",
+            "country": "New Zeland",
+            "phone": "33 55 789 123",
+            "street": "Cook St.",
+            "streetNumber": "5",
+            "zipcode": 600
+          },
+          "customerStatus": 1,
+          "id": "2",
+          "password": "1234",
+          "person": {
+            "email": "john.doe@customDomain.com",
+            "lastname": "John",
+            "phone": "33 55 789 123",
+            "surname": "Doe"
+          }
+        },
+        {
+          "address": {
+            "city": "Auckland",
+            "country": "New Zeland",
+            "phone": "22 44 512 689",
+            "street": "Nicholas St.",
+            "streetNumber": "55",
+            "zipcode": 612
+          },
+          "customerStatus": 1,
+          "id": "3",
+          "password": "1234",
+          "person": {
+            "email": "alex.kowalsky@customDomain.com",
+            "lastname": "Alex",
+            "phone": "88 55 998 556",
+            "surname": "Kowalsky"
+          }
+        },
+        {
+          "address": {
+            "city": "Auckland",
+            "country": "New Zeland",
+            "phone": "99 77 235 685 ",
+            "street": "Hobson St.",
+            "streetNumber": "7",
+            "zipcode": 600
+          },
+          "customerStatus": 1,
+          "id": "4",
+          "password": "1234",
+          "person": {
+            "email": "andrew.fitzgerald@customDomain.com",
+            "lastname": "Andrew",
+            "phone": "33 55 789 123",
+            "surname": "Fitzgerald"
+          }
+        }
+      ]
+    ]
   ],
-  "products": []
+  "products": [
+    [
+      {
+        "description": "Apple",
+        "id": "1",
+        "manufacturer": 1,
+        "price": 11.2
+      },
+      {
+        "description": "Banana",
+        "id": "2",
+        "manufacturer": 1,
+        "price": 3.6
+      },
+      {
+        "description": "Grapes",
+        "id": "3",
+        "manufacturer": 1,
+        "price": 2.6
+      },
+      {
+        "description": "Raspberry",
+        "id": "4",
+        "manufacturer": 1,
+        "price": 15.8
+      },
+      {
+        "description": "Strawberry",
+        "id": "5",
+        "manufacturer": 2,
+        "price": 18.3
+      },
+      {
+        "description": "Strawberry",
+        "id": "6",
+        "manufacturer": 2,
+        "price": 18.3
+      },
+      {
+        "description": "Orange",
+        "id": "7",
+        "manufacturer": 6,
+        "price": 10.5
+      },
+      {
+        "description": "Grapefruit",
+        "id": "8",
+        "manufacturer": 6,
+        "price": 10.5
+      },
+      {
+        "description": "Mango",
+        "id": "9",
+        "manufacturer": 2,
+        "price": 19.7
+      },
+      {
+        "description": "Pears",
+        "id": "10",
+        "manufacturer": 6,
+        "price": 4.4
+      },
+      {
+        "description": "Kiwi",
+        "id": "11",
+        "manufacturer": 2,
+        "price": 16.6
+      },
+      {
+        "description": "Ananas",
+        "id": "12",
+        "manufacturer": 6,
+        "price": 14.7
+      },
+      {
+        "description": "Cherry",
+        "id": "13",
+        "manufacturer": 6,
+        "price": 13.8
+      },
+      {
+        "description": "Peach",
+        "id": "14",
+        "manufacturer": 6,
+        "price": 9.4
+      }
+    ]
+  ]
 }

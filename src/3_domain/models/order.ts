@@ -17,6 +17,10 @@ export class Order {
     public billingAddress: Address;
     public deliveryAddress: Address;
 
+    public constructor(init?: Partial<Order>) {
+        Object.assign(this, init);
+    }
+
     public updateOrder(status: OrderStatus) { return; }
     public createBillingInformation(): Bill { return new Bill(); }
 }

@@ -15,4 +15,17 @@ export class ProductService implements IProductService {
         return this.productRepository.getAll();
     }
 
+    public getById(id: string): Product {
+        return this.productRepository.getById(id);
+    }
+    public addProduct(product: Product): Product {
+        return this.productRepository.add(product);
+    }
+    public updateProduct(id: string, product: Product): Product {
+        return this.productRepository.update(id, product);
+    }
+    public removeProduct(id: string): boolean {
+        return this.removeProduct(id);
+    }
+
 }
