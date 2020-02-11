@@ -31,7 +31,11 @@ export class CustomerService implements ICustomerService {
         return this.customerRepository.update(id, model);
     }
     public addAddressToCustomer(customerId: string, address: Address): boolean {
-        throw new Error("Method not implemented.");
+        const customer = this.customerRepository.getById(customerId);
+        customer.address = address;
+
+        this.customerRepository.update(customerId, customer);
+        return true;
     }
     public purchase(): boolean {
         throw new Error("Method not implemented.");

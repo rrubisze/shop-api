@@ -2,13 +2,13 @@ import { Customer } from "./customer";
 import { Order } from "./order";
 import { OrderItem } from "./orderItem";
 
-export class ShoppingCard {
+export class ShoppingCart {
     public id: string;
     public customer: Customer;
 
     public items: OrderItem[];
 
-    public constructor(init?: Partial<ShoppingCard>) {
+    public constructor(init?: Partial<ShoppingCart>) {
         Object.assign(this, init);
     }
 

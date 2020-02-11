@@ -4,6 +4,7 @@ const TYPES = {
     ProductRepository: Symbol.for("ProductRepository"),
     CustomerRepository: Symbol.for("CustomerRepository"),
     DatabaseContext: Symbol.for("DatabaseContext"),
+    OrderRepository: Symbol.for("OrderRepository")
 };
 
 export default TYPES;
