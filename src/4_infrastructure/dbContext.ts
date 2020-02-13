@@ -15,7 +15,7 @@ export class DatabaseContext {
         this.context = lowdb(new FileSync("db.json"));
         if (!this.context.has("customers").value()
             && !this.context.has("products").value()) {
-            this.context.defaults({ customers: [], products: [] }).write();
+            this.context.defaults({ customers: [], products: [], orders: [] }).write();
             this.seedProducts();
             this.seedCustomers();
         }
