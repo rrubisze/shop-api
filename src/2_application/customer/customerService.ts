@@ -4,10 +4,12 @@ import TYPES from "./../../4_infrastructure/container/TYPES";
 import { Customer } from "./../../3_domain/models/customer";
 import { CustomerRepository } from "./../../4_infrastructure/repositories/customerRepository";
 import { Address } from "./../../3_domain/models/address";
-import { Bill } from "./../..//3_domain/models/bill";
+import { Bill } from "./../../3_domain/models/bill";
+import { Order } from "./../../3_domain/models/order";
 
 @injectable()
 export class CustomerService implements ICustomerService {
+
     private customerRepository: CustomerRepository;
 
     constructor(@inject(TYPES.CustomerRepository) customerRepository: CustomerRepository) {
@@ -37,9 +39,21 @@ export class CustomerService implements ICustomerService {
         this.customerRepository.update(customerId, customer);
         return true;
     }
-    public purchase(): boolean {
+
+    public purchase(customerId: string): boolean {
+        const customer = this.customerRepository.getById(customerId);
+
+        customer.purchase();
+
+        return true;
+    }
+    public addItemToCart(customerId: string, item: import("../../3_domain/models/orderItem").OrderItem): boolean {
         throw new Error("Method not implemented.");
     }
+    public removeItemFromCart(customerId: string, item: import("../../3_domain/models/orderItem").OrderItem): boolean {
+        throw new Error("Method not implemented.");
+    }
+
     public getBill(oderId: string): Bill {
         throw new Error("Method not implemented.");
     }

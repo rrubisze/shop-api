@@ -27,6 +27,11 @@ export class Customer {
     public changePassword(password: string): Customer { this.password = password; return this; }
     public emptyCart() { this.shoppingCart.items = []; }
     public updateCart(items: OrderItem[]): ShoppingCart {this.shoppingCart.items = items; return this.shoppingCart; }
-    public purchase(orderId: string) { return; }
+    public purchase() {
+        const newOrder = this.shoppingCart.purchase();
+        this.shoppingCart = new ShoppingCart();
+        return;
+    }
+
     public updateStatus(status: CustomerStatus): Customer { this.customerStatus = status; return this; }
 }
