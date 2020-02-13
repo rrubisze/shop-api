@@ -16,7 +16,7 @@ export abstract class BaseRepository<T> {
     }
 
     public getById(id: string): T {
-        ///// TODO: Fix searching
+        /// TODO: Fix searching
         const a =  this.getCurrentContext().find({id})
         .value();
         return a;

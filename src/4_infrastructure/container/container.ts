@@ -10,7 +10,6 @@ import { DatabaseContext } from "../dbContext";
 import { OrderRepository } from "../repositories/orderRepository";
 import { OrderService } from "../../2_application/order/orderService";
 import { IOrderService } from "../../2_application/order/orderServiceInterface";
-
 export class ShopDependencyContainer {
 
     public getContainer(): Container {
