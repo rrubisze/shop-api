@@ -1,7 +1,7 @@
 import { Customer } from "./../../3_domain/models/customer";
 import { Address } from "./../../3_domain/models/address";
-import { Bill } from "./../../3_domain/models/bill";
 import { OrderItem } from "./../../3_domain/models/orderItem";
+import { ShoppingCart } from "./../../3_domain/models/shoppingCart";
 
 export interface ICustomerService {
     getAll(): Customer[];
@@ -14,4 +14,5 @@ export interface ICustomerService {
     removeItemFromCart(customerId: string, item: OrderItem): boolean;
     purchase(customerId: string): boolean;
     updateCustomerEmail(id: string, email: string): Customer;
+    emptyCart(customerId: string): Customer;
 }

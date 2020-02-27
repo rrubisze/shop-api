@@ -58,11 +58,6 @@ export class CustomerController {
       return this.customerService.updateCustomerEmail(id, email);
   }
 
-  @httpPost("/:id/cart")
-  public createCart(@requestParam("id") id: string, @request() req: express.Request): Customer {
-      return null;
-  }
-
   @httpPut("/:id/cart")
   public addItemToCart(@requestParam("id") id: string, @request() req: express.Request): boolean {
       return this.customerService.addItemToCart(id, req.body as OrderItem);
@@ -74,6 +69,6 @@ export class CustomerController {
 
   @httpDelete("/:id/cart/empty")
   public emptyCart(@requestParam("id") id: string): Customer {
-      return null;
+      return this.customerService.emptyCart(id);
   }
 }

@@ -4,7 +4,6 @@ import TYPES from "./../../4_infrastructure/container/TYPES";
 import { Customer } from "./../../3_domain/models/customer";
 import { CustomerRepository } from "./../../4_infrastructure/repositories/customerRepository";
 import { Address } from "./../../3_domain/models/address";
-import { Bill } from "./../../3_domain/models/bill";
 import { OrderRepository } from "./../../4_infrastructure/repositories/orderRepository";
 import { OrderItem } from "./../../3_domain/models/orderItem";
 import { ShoppingCart } from "./../../3_domain/models/shoppingCart";
@@ -88,10 +87,10 @@ export class CustomerService implements ICustomerService {
 
         return true;
     }
-    
+
     public updateCustomerEmail(id: string, email: string): Customer {
         const customer = this.customerRepository.getById(id);
-        if (customer === null){
+        if (customer === null) {
             throw Error("Customer not found. Param: id: " + id);
         }
         customer.changeEmail(email);
@@ -101,4 +100,15 @@ export class CustomerService implements ICustomerService {
         return customer;
     }
 
+    public emptyCart(customerId: string): Customer {
+        const customer = this.customerRepository.getById(customerId);
+
+        if (customer === null) {
+            throw Error("Customer not found. Param: id: " + customerId);
+        }
+
+        customer.emptyCart();
+        this.customerRepository.update(customerId, customer);
+        return customer;
+    }
 }
