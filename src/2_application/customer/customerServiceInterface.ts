@@ -13,5 +13,5 @@ export interface ICustomerService {
     addItemToCart(customerId: string, item: OrderItem): boolean;
     removeItemFromCart(customerId: string, item: OrderItem): boolean;
     purchase(customerId: string): boolean;
-    getBill(oderId: string): Bill;
+    updateCustomerEmail(id: string, email: string): Customer;
 }

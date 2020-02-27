@@ -28,7 +28,6 @@ export class Customer {
     public emptyCart() { this.shoppingCart.items = []; }
     public updateCart(items: OrderItem[]): ShoppingCart {this.shoppingCart.items = items; return this.shoppingCart; }
     public purchase() {
-        const newOrder = this.shoppingCart.purchase();
         this.shoppingCart = new ShoppingCart();
         return;
     }

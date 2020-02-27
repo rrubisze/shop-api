@@ -7,6 +7,8 @@ import { request,
 import TYPES from "./../../4_infrastructure/container/TYPES";
 import { Customer } from "./../../3_domain/models/customer";
 import { ICustomerService } from "./../../2_application/customer/customerServiceInterface";
+import { Address } from "./../../3_domain/models/address";
+import { OrderItem } from "./../../3_domain/models/orderItem";
 
 @controller("/customer")
 export class CustomerController {
@@ -23,47 +25,37 @@ export class CustomerController {
 
   @httpGet("/:id")
   public getCustomerById(@requestParam("id") id: string): Customer {
-      return null;
+      return this.customerService.getById(id);
   }
 
   @httpPost("/")
   public createCustomer(@request() req: express.Request): Customer {
-      return null;
+      return this.customerService.createCustomer( req.body as Customer);
   }
 
   @httpPut("/:id")
   public updateCustomer(@requestParam("id") id: string, @request() req: express.Request): Customer {
-      return null;
+      return this.customerService.updateCustomer(id, req.body as Customer);
   }
 
   @httpDelete("/:id")
-  public deleteCustomer(@requestParam("id") id: string): Customer {
-      return null;
+  public deleteCustomer(@requestParam("id") id: string): void {
+      this.customerService.deleteCustomer(id);
   }
 
   @httpPost("/address/customer/:id")
   public addAddress(@requestParam("id") id: string, @request() req: express.Request): boolean {
-      return false;
+      return this.customerService.addAddressToCustomer(id, req.body as Address);
   }
 
   @httpPost("/customer/:id/purchase")
   public purchase(@requestParam("id") id: string, @request() req: express.Request): boolean {
-      return false;
-  }
-
-  @httpGet("/customer/:id/bill")
-  public getBill(@requestParam("id") id: string, @request() req: express.Request): boolean {
-      return false;
-  }
-
-  @httpDelete("/address/customer/:id")
-  public deleteAddress(@requestParam("id") id: string, @request() req: express.Request): boolean {
-      return false;
+      return this.customerService.purchase(id);
   }
 
   @httpPatch("/:id/email")
-  public updateCustomerEmail(@queryParam("email") start: string): Customer {
-      return null;
+  public updateCustomerEmail(@requestParam("id") id: string,  @queryParam("email") email: string): Customer {
+      return this.customerService.updateCustomerEmail(id, email);
   }
 
   @httpPost("/:id/cart")
@@ -72,12 +64,12 @@ export class CustomerController {
   }
 
   @httpPut("/:id/cart")
-  public addItemToCart(@requestParam("id") id: string, @request() req: express.Request): Customer {
-      return null;
+  public addItemToCart(@requestParam("id") id: string, @request() req: express.Request): boolean {
+      return this.customerService.addItemToCart(id, req.body as OrderItem);
   }
   @httpDelete("/:id/cart")
-  public removeItemFromCart(@requestParam("id") id: string, @request() req: express.Request): Customer {
-      return null;
+  public removeItemFromCart(@requestParam("id") id: string, @request() req: express.Request): boolean {
+      return this.customerService.removeItemFromCart(id, req.body as OrderItem);
   }
 
   @httpDelete("/:id/cart/empty")

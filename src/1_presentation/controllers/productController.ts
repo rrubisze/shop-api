@@ -23,8 +23,7 @@
 
     @httpGet("/:id")
     public getProduct(@requestParam("id") id: string): Product {
-        const a = this.productService.getById(id);
-        return a;
+        return this.productService.getById(id);
     }
 
     @httpPost("/")
