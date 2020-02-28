@@ -18,9 +18,10 @@
     "body-parser": "1.19.0",
     "express": "^4.16.4",
     "inversify": "^5.0.1",
+    "inversify-express-doc": "^1.4.6",
     "inversify-express-utils": "6.3.2",
     "inversify-logger-middleware": "3.1.0",
-    "linqts": "^1.12.6",
+    "linqts": "1.12.1",
     "lowdb": "^1.0.0",
     "reflect-metadata": "^0.1.13"
   },

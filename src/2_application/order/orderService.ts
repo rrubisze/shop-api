@@ -1,11 +1,12 @@
 import { IOrderService } from "./orderServiceInterface";
 import { Order } from "./../../3_domain/models/order";
-import { inject } from "inversify";
+import { inject, injectable } from "inversify";
 import TYPES from "./../../4_infrastructure/container/TYPES";
 import { OrderRepository } from "./../../4_infrastructure/repositories/orderRepository";
 import { OrderStatus } from "./../../3_domain/models/orderStatus";
 import { Bill } from "./../../3_domain/models/bill";
 
+@injectable()
 export class OrderService implements IOrderService {
 
     private orderRepository: OrderRepository;
