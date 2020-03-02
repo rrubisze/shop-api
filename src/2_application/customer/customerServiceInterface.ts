@@ -10,8 +10,8 @@ export interface ICustomerService {
     deleteCustomer(id: string): boolean;
     updateCustomer(id: string, model: Customer): Customer;
     addAddressToCustomer(customerId: string, address: Address): boolean;
-    addItemToCart(customerId: string, item: OrderItem): boolean;
-    removeItemFromCart(customerId: string, item: OrderItem): boolean;
+    addItemToCart(customerId: string, productId: string, quantity: number): boolean;
+    removeItemFromCart(customerId: string, productId: string, quantity: number): boolean;
     purchase(customerId: string): boolean;
     updateCustomerEmail(id: string, email: string): Customer;
     emptyCart(customerId: string): Customer;

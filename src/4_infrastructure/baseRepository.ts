@@ -1,6 +1,6 @@
 import { injectable } from "inversify";
 import { DatabaseContext } from "./dbContext";
-import { find, filter } from "lodash";
+import { find, filter, size } from "lodash";
 
 @injectable()
 export abstract class BaseRepository<T> {
@@ -28,20 +28,20 @@ export abstract class BaseRepository<T> {
 
     public add(model: T): T {
         this.getCurrentContext().push(model).write();
-        return this.getCurrentContext().find({model}).value();
+        return this.getCurrentContext().find(model).value();
     }
 
     public update(id: string, model: T): T {
         this.getCurrentContext()
-            .find(id)
+            .find({id})
             .assign(model)
             .write();
-        return this.getCurrentContext().find(id).value();
+        return this.getCurrentContext().find({id}).value();
     }
 
     public delete(id: string): T {
         return this.getCurrentContext()
-            .remove(id)
+            .remove({id})
             .write();
     }
 

@@ -10,7 +10,7 @@ import { ICustomerService } from "./../../2_application/customer/customerService
 import { Address } from "./../../3_domain/models/address";
 import { OrderItem } from "./../../3_domain/models/orderItem";
 
-@controller("/customer")
+@controller("/customers")
 export class CustomerController {
     private customerService: ICustomerService;
 
@@ -43,13 +43,13 @@ export class CustomerController {
       this.customerService.deleteCustomer(id);
   }
 
-  @httpPost("/address/customer/:id")
+  @httpPatch("/:id/address")
   public addAddress(@requestParam("id") id: string, @request() req: express.Request): boolean {
       return this.customerService.addAddressToCustomer(id, req.body as Address);
   }
 
-  @httpPost("/customer/:id/purchase")
-  public purchase(@requestParam("id") id: string, @request() req: express.Request): boolean {
+  @httpPost("/:id/purchase")
+  public purchase(@requestParam("id") id: string): boolean {
       return this.customerService.purchase(id);
   }
 
@@ -59,12 +59,16 @@ export class CustomerController {
   }
 
   @httpPut("/:id/cart")
-  public addItemToCart(@requestParam("id") id: string, @request() req: express.Request): boolean {
-      return this.customerService.addItemToCart(id, req.body as OrderItem);
+  public addItemToCart(@requestParam("id") id: string,
+                       @queryParam("productId") productId: string,
+                       @queryParam("quantity") quantity: number): boolean {
+      return this.customerService.addItemToCart(id, productId, quantity);
   }
   @httpDelete("/:id/cart")
-  public removeItemFromCart(@requestParam("id") id: string, @request() req: express.Request): boolean {
-      return this.customerService.removeItemFromCart(id, req.body as OrderItem);
+  public removeItemFromCart(@requestParam("id") id: string,
+                            @queryParam("productId") productId: string,
+                            @queryParam("quantity") quantity: number): boolean {
+      return this.customerService.removeItemFromCart(id, productId, quantity);
   }
 
   @httpDelete("/:id/cart/empty")

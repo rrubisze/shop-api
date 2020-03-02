@@ -8,17 +8,21 @@ import { OrderRepository } from "./../../4_infrastructure/repositories/orderRepo
 import { OrderItem } from "./../../3_domain/models/orderItem";
 import { ShoppingCart } from "./../../3_domain/models/shoppingCart";
 import { Utils } from "./../../3_domain/utils/utils";
+import { ProductRepository } from "./../../4_infrastructure/repositories/productRepository";
 
 @injectable()
 export class CustomerService implements ICustomerService {
 
     private customerRepository: CustomerRepository;
     private orderRepository: OrderRepository;
+    private productRepository: ProductRepository;
 
     constructor(@inject(TYPES.CustomerRepository) customerRepository: CustomerRepository,
-                @inject(TYPES.OrderRepository) orderRepository: OrderRepository ) {
+                @inject(TYPES.OrderRepository) orderRepository: OrderRepository,
+                @inject(TYPES.ProductRepository) productRepository: ProductRepository ) {
         this.customerRepository = customerRepository;
         this.orderRepository = orderRepository;
+        this.productRepository = productRepository;
     }
     public getAll(): Customer[] {
         return this.customerRepository.getAll();
@@ -28,6 +32,7 @@ export class CustomerService implements ICustomerService {
         return this.customerRepository.getById(id);
     }
     public createCustomer(customer: Customer): Customer {
+        customer.id = Utils.getGuid();
         return this.customerRepository.add(customer);
     }
     public deleteCustomer(id: string): boolean {
@@ -56,31 +61,42 @@ export class CustomerService implements ICustomerService {
 
         return true;
     }
-    public addItemToCart(customerId: string, item: OrderItem): boolean {
+    public addItemToCart(customerId: string, productId: string, quantity: number): boolean {
         const customer = this.customerRepository.getById(customerId);
+        const product = this.productRepository.getById(productId);
+
+        const orderItem = new OrderItem({
+            product,
+            quantity,
+        });
 
         if (customer.shoppingCart === null) {
             customer.shoppingCart = new ShoppingCart({
                 customer,
                 id: Utils.getGuid(),
-                items: [item],
+                items: [orderItem],
             });
             return true;
         } else {
-            customer.shoppingCart.items.push(item);
+            customer.shoppingCart.items.push(orderItem);
         }
 
         this.customerRepository.update(customerId, customer);
 
         return true;
     }
-    public removeItemFromCart(customerId: string, item: OrderItem): boolean {
+    public removeItemFromCart(customerId: string, productId: string, quantity: number): boolean {
         const customer = this.customerRepository.getById(customerId);
+        const product = this.productRepository.getById(productId);
 
+        const orderItem = new OrderItem({
+            product,
+            quantity,
+        });
         if (customer.shoppingCart === null) {
             throw new Error("No items in shopping cart");
         } else {
-            customer.shoppingCart.items = customer.shoppingCart.items.filter((x) => x === item);
+            customer.shoppingCart.items = customer.shoppingCart.items.filter((x) => x === orderItem);
         }
 
         this.customerRepository.update(customerId, customer);
