@@ -51,12 +51,14 @@ export class CustomerService implements ICustomerService {
     }
 
     public purchase(customerId: string): boolean {
-        const customer = this.customerRepository.getById(customerId);
+        const dbEntity = this.customerRepository.getById(customerId);
+        const customer = new Customer(dbEntity);
 
         customer.purchase();
-        const order = customer.shoppingCart.purchase();
+        const order = customer.shoppingCart.purchase(customer);
         order.createBillingInformation();
 
+        this.customerRepository.update(customerId, customer);
         this.orderRepository.add(order);
 
         return true;
@@ -96,7 +98,8 @@ export class CustomerService implements ICustomerService {
         if (customer.shoppingCart === null) {
             throw new Error("No items in shopping cart");
         } else {
-            customer.shoppingCart.items = customer.shoppingCart.items.filter((x) => x === orderItem);
+            customer.shoppingCart.items = customer.shoppingCart.items
+            .filter((x) => x.product.description !== orderItem.product.description);
         }
 
         this.customerRepository.update(customerId, customer);

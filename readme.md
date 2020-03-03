@@ -1,0 +1,1 @@
+In posman please set a global varriable called "baseAddress". It will be probably http://localhost:3000.

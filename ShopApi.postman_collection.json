@@ -1,0 +1,586 @@
+{
+	"info": {
+		"_postman_id": "c017598f-7de6-4f40-a363-f023b8bd6d24",
+		"name": "ShopApi",
+		"description": "Postman collection for ShopAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "Get all customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseAddress}}/customers",
+							"host": [
+								"{{baseAddress}}"
+							],
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get customer by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseAddress}}/customers/2",
+							"host": [
+								"{{baseAddress}}"
+							],
+							"path": [
+								"customers",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create customer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"address\": {\n            \"city\": \"Auckland\",\n            \"country\": \"New Zeland\",\n            \"phone\": \"44 33 548 456\",\n            \"street\": \"Samlet St.\",\n            \"streetNumber\": \"1\",\n            \"zipcode\": 612\n        },\n        \"customerStatus\": 0,\n        \"password\": \"1234\",\n        \"person\": {\n            \"email\": \"melinda.stone@customDomain.com\",\n            \"lastname\": \"Melinda\",\n            \"phone\": \"33 55 789 123\",\n            \"surname\": \"Stone\"\n        }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseAddress}}/customers",
+							"host": [
+								"{{baseAddress}}"
+							],
+							"path": [
+								"customers"
+							]
+						},
+						"description": "Customer status:\n    New = 0 ,\n    Active = 1,\n    Blocker = 2,\n    Retired = 3,"
+					},
+					"response": []
+				},
+				{
+					"name": "Update customer",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"address\": {\n            \"city\": \"Auckland\",\n            \"country\": \"New Zeland\",\n            \"phone\": \"44 33 548 456\",\n            \"street\": \"Samlet St.\",\n            \"streetNumber\": \"1\",\n            \"zipcode\": 612\n        },\n        \"customerStatus\": 1,\n        \"password\": \"HeyIWantToUpdatePassword\",\n        \"person\": {\n            \"email\": \"emma.stone@customDomain.com\",\n            \"lastname\": \"Emma\",\n            \"phone\": \"55 66 77 888\",\n            \"surname\": \"Stone\"\n        }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseAddress}}/customers/1",
+							"host": [
+								"{{baseAddress}}"
+							],
+							"path": [
+								"customers",
+								"1"
+							]
+						},
+						"description": "Change person phone number and password"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete customer",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseAddress}}/customers/1",
+							"host": [
+								"{{baseAddress}}"
+							],
+							"path": [
+								"customers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add address to customer",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"city\": \"Auckland\",\n    \"country\": \"New Zeland\",\n    \"phone\": \"44 33 548 456\",\n    \"street\": \"Samlet St.\",\n    \"streetNumber\": \"1\",\n    \"zipcode\": 612\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseAddress}}/customers/2/address",
+							"host": [
+								"{{baseAddress}}"
+							],
+							"path": [
+								"customers",
+								"2",
+								"address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Purchase customer shopping cart",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseAddress}}/customers/2/purchase",
+							"host": [
+								"{{baseAddress}}"
+							],
+							"path": [
+								"customers",
+								"2",
+								"purchase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change customer email",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseAddress}}/customers/1/email?email=emma.stone@awesomedomainc.nl",
+							"host": [
+								"{{baseAddress}}"
+							],
+							"path": [
+								"customers",
+								"1",
+								"email"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "emma.stone@awesomedomainc.nl"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add item to cart",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseAddress}}/customers/2/cart?quantity=5&productId=2",
+							"host": [
+								"{{baseAddress}}"
+							],
+							"path": [
+								"customers",
+								"2",
+								"cart"
+							],
+							"query": [
+								{
+									"key": "quantity",
+									"value": "5"
+								},
+								{
+									"key": "productId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove item from cart",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseAddress}}/customers/2/cart?quantity=5&productId=2",
+							"host": [
+								"{{baseAddress}}"
+							],
+							"path": [
+								"customers",
+								"2",
+								"cart"
+							],
+							"query": [
+								{
+									"key": "quantity",
+									"value": "5"
+								},
+								{
+									"key": "productId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Empty cart",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseAddress}}/customers/1/cart/empty",
+							"host": [
+								"{{baseAddress}}"
+							],
+							"path": [
+								"customers",
+								"1",
+								"cart",
+								"empty"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Get all orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseAddress}}/orders",
+							"host": [
+								"{{baseAddress}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get order by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseAddress}}/orders/1",
+							"host": [
+								"{{baseAddress}}"
+							],
+							"path": [
+								"orders",
+								"1"
+							]
+						},
+						"description": "id is a guid generated by API, please provide it after you prepare a order"
+					},
+					"response": []
+				},
+				{
+					"name": "Get order bill",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseAddress}}/orders/47aa723a-4079-4e0a-97e0-a863bd2f4463/bill",
+							"host": [
+								"{{baseAddress}}"
+							],
+							"path": [
+								"orders",
+								"47aa723a-4079-4e0a-97e0-a863bd2f4463",
+								"bill"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change order status",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseAddress}}/orders/47aa723a-4079-4e0a-97e0-a863bd2f4463?status=4",
+							"host": [
+								"{{baseAddress}}"
+							],
+							"path": [
+								"orders",
+								"47aa723a-4079-4e0a-97e0-a863bd2f4463"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "4"
+								}
+							]
+						},
+						"description": "id is a guid generated by API, please provide it after you prepare a order\n\nNew = 0,\nProcessing = 1,\nShipping = 2,\nDelivered = 4,\nCancelled = 8,"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseAddress}}/orders/1",
+							"host": [
+								"{{baseAddress}}"
+							],
+							"path": [
+								"orders",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update order status",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseAddress}}/orders/1",
+							"host": [
+								"{{baseAddress}}"
+							],
+							"path": [
+								"orders",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Get all products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseAddress}}/products",
+							"host": [
+								"{{baseAddress}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get product by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseAddress}}/products/1",
+							"host": [
+								"{{baseAddress}}"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"description\": \"Peach\",\n        \"id\": \"14\",\n        \"manufacturer\": 6,\n        \"price\": 9.9\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseAddress}}/products/1",
+							"host": [
+								"{{baseAddress}}"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"Blueberry\",\n    \"manufacturer\": 1,\n    \"price\": 21.7\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseAddress}}/products",
+							"host": [
+								"{{baseAddress}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseAddress}}/products/1",
+							"host": [
+								"{{baseAddress}}"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

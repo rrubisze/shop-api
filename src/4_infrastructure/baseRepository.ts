@@ -19,7 +19,7 @@ export abstract class BaseRepository<T> {
         /// TODO: Fix searching
         const a =  this.getCurrentContext().find({id})
         .value();
-        return a;
+        return a as T;
     }
 
     public getBy(predicate: (arg: any) => boolean): T[] {

@@ -27,7 +27,9 @@ export class OrderService implements IOrderService {
     }
 
     public updateOrderStatus(orderId: string, orderStatus: OrderStatus): Order {
-        const order = this.orderRepository.getById(orderId);
+        const dbEntity = this.orderRepository.getById(orderId);
+        const order = new Order(dbEntity);
+
         order.updateOrder(orderStatus);
         this.orderRepository.update(orderId, order);
         return order;

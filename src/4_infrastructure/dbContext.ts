@@ -6,6 +6,7 @@ import { Customer } from "./../3_domain/models/customer";
 import { Address } from "./../3_domain/models/address";
 import { CustomerStatus } from "./../3_domain/models/customerStatus";
 import { Person } from "./../3_domain/models/person";
+import { ShoppingCart } from "./../3_domain/models/shoppingCart";
 
 @injectable()
 export class DatabaseContext {
@@ -141,6 +142,28 @@ export class DatabaseContext {
                 phone: "33 55 789 123",
                 surname: "Stone",
             }),
+            shoppingCart: new ShoppingCart({
+                customer: new Customer({
+                    address: new Address({
+                        city: "Auckland",
+                        country: "New Zeland",
+                        phone: "44 33 548 456",
+                        street: "Samlet St.",
+                        streetNumber: "1",
+                        zipcode: 612,
+                    }),
+                    customerStatus: CustomerStatus.Active,
+                    id: "1",
+                    password: "1234",
+                    person: new Person({
+                        email: "emma.stone@customDomain.com",
+                        lastname: "Emma",
+                        phone: "33 55 789 123",
+                        surname: "Stone",
+                    }),
+                }),
+                id: "1",
+            }),
         });
         const customer2 = new Customer({
             address: new Address({
@@ -159,6 +182,28 @@ export class DatabaseContext {
                 lastname: "John",
                 phone: "33 55 789 123",
                 surname: "Doe",
+            }),
+            shoppingCart: new ShoppingCart({
+                customer: new Customer({
+                    address: new Address({
+                        city: "Auckland",
+                        country: "New Zeland",
+                        phone: "33 55 789 123",
+                        street: "Cook St.",
+                        streetNumber: "5",
+                        zipcode: 600,
+                    }),
+                    customerStatus: CustomerStatus.Active,
+                    id: "2",
+                    password: "1234",
+                    person: new Person({
+                        email: "john.doe@customDomain.com",
+                        lastname: "John",
+                        phone: "33 55 789 123",
+                        surname: "Doe",
+                    }),
+                }),
+                id: "2",
             }),
         });
         const customer3 = new Customer({
@@ -179,6 +224,28 @@ export class DatabaseContext {
                 phone: "88 55 998 556",
                 surname: "Kowalsky",
             }),
+            shoppingCart: new ShoppingCart({
+                customer: new Customer({
+                    address: new Address({
+                        city: "Auckland",
+                        country: "New Zeland",
+                        phone: "22 44 512 689",
+                        street: "Nicholas St.",
+                        streetNumber: "55",
+                        zipcode: 612,
+                    }),
+                    customerStatus: CustomerStatus.Active,
+                    id: "3",
+                    password: "1234",
+                    person: new Person({
+                        email: "alex.kowalsky@customDomain.com",
+                        lastname: "Alex",
+                        phone: "88 55 998 556",
+                        surname: "Kowalsky",
+                    }),
+                }),
+                id: "3",
+            }),
         });
         const customer4 = new Customer({
             address: new Address({
@@ -198,9 +265,29 @@ export class DatabaseContext {
                 phone: "33 55 789 123",
                 surname: "Fitzgerald",
             }),
+            shoppingCart: new ShoppingCart({
+                customer: new Customer({
+                    address: new Address({
+                        city: "Auckland",
+                        country: "New Zeland",
+                        phone: "99 77 235 685 ",
+                        street: "Hobson St.",
+                        streetNumber: "7",
+                        zipcode: 600,
+                    }),
+                    customerStatus: CustomerStatus.Active,
+                    id: "4",
+                    password: "1234",
+                    person: new Person({
+                        email: "andrew.fitzgerald@customDomain.com",
+                        lastname: "Andrew",
+                        phone: "33 55 789 123",
+                        surname: "Fitzgerald",
+                    }),
+                }),
+                id: "4",
+            }),
         });
-
-        const customers = [customer1, customer2, customer3, customer4 ];
 
         this.context.get("customers").push(customer1, customer2, customer3, customer4 ).write();
     }

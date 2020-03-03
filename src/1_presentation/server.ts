@@ -29,4 +29,4 @@ serverInstance.listen(port);
 load(container);
 
 // tslint:disable-next-line: no-console
-console.log("Server started on port 8080 :)");
+console.log("Server started on port 3000 :)");

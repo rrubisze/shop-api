@@ -37,7 +37,7 @@ export class OrderController {
     return this.orderService.updateOrderStatus(id, status);
   }
 
-  @httpGet(":id/bill")
+  @httpGet("/:id/bill")
   public getBill(@requestParam("id") id: string): Bill {
       return this.orderService.getOrderBill(id);
   }
