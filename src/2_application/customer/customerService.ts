@@ -54,8 +54,8 @@ export class CustomerService implements ICustomerService {
         const dbEntity = this.customerRepository.getById(customerId);
         const customer = new Customer(dbEntity);
 
-        customer.purchase();
         const order = customer.shoppingCart.purchase(customer);
+        customer.purchase();
         order.createBillingInformation();
 
         this.customerRepository.update(customerId, customer);

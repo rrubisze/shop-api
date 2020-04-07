@@ -12,7 +12,9 @@ export class ShoppingCart {
 
     public constructor(init?: Partial<ShoppingCart>) {
         Object.assign(this, init);
-        this.items = new Array<OrderItem>();
+        if (this.items === null || this.items === undefined) {
+            this.items = new Array<OrderItem>();
+        }
     }
 
     public update(items: OrderItem[]): boolean { this.items.concat(items); return true; }

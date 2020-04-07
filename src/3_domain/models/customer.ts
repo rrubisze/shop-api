@@ -19,7 +19,11 @@ export class Customer {
 
     public constructor(init?: Partial<Customer>) {
         Object.assign(this, init);
-        this.shoppingCart = new ShoppingCart();
+        if (this.shoppingCart === null || this.shoppingCart === undefined) {
+            this.shoppingCart = new ShoppingCart();
+        } else {
+            this.shoppingCart = new ShoppingCart(this.shoppingCart);
+        }
     }
 
     public addAddress(address: Address): Customer { this.address = address; return this; }
